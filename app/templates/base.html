@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='fonts.css') }}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content=""/>
+<!--place to put title-->
+{% if title %}   
+<title>{{title}} - microblog</title>
+{% else %}
+<title>microblog</title>
+{% endif %}
+</head>
+
+<body>
+	<div id="header-wrapper">
+		<div id="header" class="containter">
+			<div id="logo">
+				<h1><a href="#">Microblog</a/></h1>
+				<span>Hastily Programmed by Kenny</span>
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="/index">Home</a></li>
+					<li><a href="login" accesskey="2" title="">Login</a></li>
+					<li><a href="agout" accesskey="3" title="">About</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper2">
+		<div id="welcome" class="container">
+			<div class="title">
+					{% with messages = get_flashed_messages() %}
+    					{% if messages %}
+					<ul>
+					{% for message in messages %}
+					<a href="#" class="button">
+        				<li>{{ message }} </li>
+					</a>
+    					{% endfor %}
+    					</ul>
+    					{% endif %}
+    					{% endwith %}
+			</div>
+			<p>
+    			{% block content %}{% endblock %}
+  			</p>
+		</div>
+	</div>
+
+	<div id="wrapper4">
+		<div id="footer" class="container">
+			<div>
+				<header class="title">
+					<h2>Keep in touch</h2>
+					<span class="byline">Sharing is caring, and it can be fun</span></header>
+				<ul class="contact">	
+					<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
+					<li><a href="#" class="icon icon-facebook"><span></span></a></li>
+					<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+					<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+					<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
+

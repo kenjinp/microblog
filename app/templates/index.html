@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Hi, {{user.nickname}}!</h1>
+<p>This is <strong>Microblog</strong>, a slopilly designed and fully disfunctinal microblogging platform programmed by <a href="#">Kenny</a> using flask. I hope you have a great day!
+</div></div>
+
+{% if result.error %}
+	<h2>Damn that error: {{ result.error.message}}</h2>
+{% endif %}
+
+{% if result.user %}
+	<h1>Hi {{result.user.name}}</h1>
+{% endif %}
+
+<div id="wrapper3">
+{% for post in posts %}
+<h2><a href="#" class="button">{{post.author.nickname}} says: </a></h2>
+<div class="title">
+	<b>{{post.body}}</b>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
