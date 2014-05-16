@@ -17,14 +17,20 @@
 	<div id="header-wrapper">
 		<div id="header" class="containter">
 			<div id="logo">
-				<h1><a href="#">Microblog</a/></h1>
+				<h1><a href="{{ url_for('index') }}">Microblog</a/></h1>
 				<span>Hastily Programmed by Kenny</span>
 			</div>
 			<div id="menu">
 				<ul>
 					<li class="current_page_item"><a href="/index">Home</a></li>
-					<li><a href="login" accesskey="2" title="">Login</a></li>
-					<li><a href="agout" accesskey="3" title="">About</a></li>
+
+					{% if g.user.is_authenticated() %}
+					<li><a href="{{ url_for('logout') }}" accesskey="3" title="">Logout</a></li>
+					<li><a href="{{ url_for('user', nickname = g.user.nickname) }}">Your Profile</a>
+					{% else %}
+					<li><a href="{{ url_for('login') }}" accesskey="2" title="">Login</a></li>
+					{% endif %}
+					<li><a href="about" accesskey="4" title="">About</a></li>
 				</ul>
 			</div>
 		</div>

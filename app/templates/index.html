@@ -1,23 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Hi, {{user.nickname}}!</h1>
-<p>This is <strong>Microblog</strong>, a slopilly designed and fully disfunctinal microblogging platform programmed by <a href="#">Kenny</a> using flask. I hope you have a great day!
-</div></div>
-
-{% if result.error %}
-	<h2>Damn that error: {{ result.error.message}}</h2>
-{% endif %}
-
-{% if result.user %}
-	<h1>Hi {{result.user.name}}</h1>
-{% endif %}
-
+<p>This is <strong>Microblog</strong>, a slopilly designed and fully disfunctinal microblogging platform programmed by <b><a href="/user/Kenny%20Pirman">Kenny</a></b> using flask. I hope you have a great day!
+</div>
+<form action="" method="post" name="post">
+	{{form.hidden_tag()}}
+	<table>
+		<tr>
+			<td>Say something:</td>
+			<td>{{ form.post(size = 30, maxlength = 140) }}</td>
+			<td>
+			{% for error in form.errors.post %}
+			<span style="color: red;">[{{error}}]</span><br>
+			{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="Post!"></td>
+			<td></td>
+		</tr>
+	</table>
+</form>
+</div>
 <div id="wrapper3">
 {% for post in posts %}
-<h2><a href="#" class="button">{{post.author.nickname}} says: </a></h2>
-<div class="title">
-	<b>{{post.body}}</b>
-</div>
+{% include 'post.html' %}LOLOLOLOL<br>
 {% endfor %}
 </div>
 {% endblock %}
